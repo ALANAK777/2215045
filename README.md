@@ -50,7 +50,7 @@ A simple and robust HTTP URL Shortener microservice with analytics capabilities,
 
 
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 ```bash
