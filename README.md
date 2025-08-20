@@ -65,14 +65,6 @@ npm start
 
 ```
 
-## 🏃‍♂️ Getting Started
-
-1. **Clone the repository**
-2. **Install dependencies**: `npm install`
-3. **Start the server**: `npm start`
-4. **Test the API**: Visit `http://localhost:3000/health`
-5. **Run demos**: `npm run demo:backend`
-
 
 **Student Submission for Campus Hiring Backend Evaluation**  
 **Roll Number**: 2215045  
