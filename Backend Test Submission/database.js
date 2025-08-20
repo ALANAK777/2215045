@@ -1,22 +1,17 @@
-/**
- * Simple In-Memory Database for URL Shortener
- * Stores shortened URLs and their analytics data
- */
+
 
 const logger = require('./logger');
 
 class URLDatabase {
     constructor() {
-        // In-memory storage
-        this.urls = new Map(); // shortcode -> url data
-        this.analytics = new Map(); // shortcode -> analytics data
+        
+        this.urls = new Map(); 
+        this.analytics = new Map(); 
         
         logger.info('db', 'In-memory database initialized');
     }
 
-    /**
-     * Generate a random shortcode
-     */
+
     generateShortcode(length = 5) {
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let result = '';
@@ -26,39 +21,31 @@ class URLDatabase {
         return result;
     }
 
-    /**
-     * Check if shortcode already exists
-     */
+
     exists(shortcode) {
         return this.urls.has(shortcode);
     }
 
-    /**
-     * Validate shortcode format
-     */
+
     isValidShortcode(shortcode) {
-        // Allow alphanumeric characters, 3-20 characters long
+       
         const regex = /^[A-Za-z0-9]{3,20}$/;
         return regex.test(shortcode);
     }
 
-    /**
-     * Check if URL is expired
-     */
+   
     isExpired(shortcode) {
         const urlData = this.urls.get(shortcode);
         if (!urlData) return true;
         return new Date() > new Date(urlData.expiry);
     }
 
-    /**
-     * Create a new short URL
-     */
+    
     async createShortURL(originalUrl, validityMinutes = 30, customShortcode = null) {
         try {
             let shortcode = customShortcode;
 
-            // Validate custom shortcode if provided
+        
             if (customShortcode) {
                 if (!this.isValidShortcode(customShortcode)) {
                     throw new Error('Invalid shortcode format. Use 3-20 alphanumeric characters.');
@@ -67,16 +54,16 @@ class URLDatabase {
                     throw new Error('Shortcode already exists. Please choose a different one.');
                 }
             } else {
-                // Generate unique shortcode
+                
                 do {
                     shortcode = this.generateShortcode();
                 } while (this.exists(shortcode));
             }
 
-            // Calculate expiry time
+            
             const expiry = new Date(Date.now() + validityMinutes * 60 * 1000);
 
-            // Store URL data
+            
             const urlData = {
                 originalUrl,
                 shortcode,
@@ -87,7 +74,7 @@ class URLDatabase {
 
             this.urls.set(shortcode, urlData);
 
-            // Initialize analytics
+           
             this.analytics.set(shortcode, {
                 totalClicks: 0,
                 clicks: []
@@ -103,9 +90,7 @@ class URLDatabase {
         }
     }
 
-    /**
-     * Get original URL by shortcode
-     */
+
     async getOriginalURL(shortcode) {
         try {
             if (!this.exists(shortcode)) {
@@ -129,9 +114,7 @@ class URLDatabase {
         }
     }
 
-    /**
-     * Record a click/visit
-     */
+
     async recordClick(shortcode, clickData) {
         try {
             if (!this.analytics.has(shortcode)) {
@@ -158,9 +141,7 @@ class URLDatabase {
         }
     }
 
-    /**
-     * Get statistics for a shortcode
-     */
+
     async getStatistics(shortcode) {
         try {
             if (!this.exists(shortcode)) {
@@ -195,9 +176,6 @@ class URLDatabase {
         }
     }
 
-    /**
-     * Clean up expired URLs (optional cleanup method)
-     */
     async cleanupExpired() {
         try {
             let cleanedCount = 0;

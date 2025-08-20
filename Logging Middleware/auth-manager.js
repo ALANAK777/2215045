@@ -1,26 +1,21 @@
 const axios = require('axios');
 
-/**
- * Authentication Manager for Logging Middleware
- * Handles token management, expiry checking, and automatic re-authentication
- */
+
 class AuthManager {
     constructor() {
         this.baseURL = 'http://20.244.56.144/evaluation-service';
         this.authEndpoint = `${this.baseURL}/auth`;
         
-        // Store credentials
+      
         this.credentials = null;
         this.currentToken = null;
         this.tokenExpiry = null;
         
-        // Token refresh buffer (refresh 5 minutes before expiry)
-        this.refreshBuffer = 5 * 60 * 1000; // 5 minutes in milliseconds
+        
+        this.refreshBuffer = 5 * 60 * 1000; 
     }
 
-    /**
-     * Set user credentials for authentication
-     */
+
     setCredentials(email, name, rollNo, accessCode, clientID, clientSecret) {
         this.credentials = {
             email,
@@ -32,21 +27,16 @@ class AuthManager {
         };
     }
 
-    /**
-     * Set current token and expiry (if you already have a valid token)
-     */
     setToken(accessToken, expiresIn) {
         this.currentToken = accessToken;
-        // expiresIn is timestamp, convert to Date if needed
+      
         if (typeof expiresIn === 'number') {
-            this.tokenExpiry = new Date(expiresIn * 1000); // Convert to milliseconds
+            this.tokenExpiry = new Date(expiresIn * 1000);
         }
         console.log(`[AUTH] Token set, expires at: ${this.tokenExpiry}`);
     }
 
-    /**
-     * Check if current token is valid and not expired
-     */
+
     isTokenValid() {
         if (!this.currentToken || !this.tokenExpiry) {
             return false;
@@ -58,23 +48,17 @@ class AuthManager {
         return now < expiryWithBuffer;
     }
 
-    /**
-     * Get a valid token (refresh if needed)
-     */
     async getValidToken() {
-        // Check if current token is still valid
+
         if (this.isTokenValid()) {
             return this.currentToken;
         }
 
-        // Token expired or doesn't exist, get a new one
+       
         console.log('[AUTH] Token expired or missing, refreshing...');
         return await this.refreshToken();
     }
 
-    /**
-     * Refresh the authentication token
-     */
     async refreshToken() {
         if (!this.credentials) {
             throw new Error('Credentials not set. Call setCredentials() first.');
@@ -85,7 +69,7 @@ class AuthManager {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                timeout: 10000 // 10 second timeout
+                timeout: 10000 
             });
 
             if (response.status === 200 || response.status === 201) {
@@ -116,9 +100,6 @@ class AuthManager {
         }
     }
 
-    /**
-     * Get token info for debugging
-     */
     getTokenInfo() {
         return {
             hasToken: !!this.currentToken,

@@ -1,14 +1,10 @@
-/**
- * Utility functions for URL Shortener
- */
+
 
 const geoip = require('geoip-lite');
 const logger = require('./logger');
 
 class Utils {
-    /**
-     * Validate URL format
-     */
+
     static isValidURL(string) {
         try {
             new URL(string);
@@ -18,12 +14,10 @@ class Utils {
         }
     }
 
-    /**
-     * Get geolocation from IP address
-     */
+
     static getLocationFromIP(ip) {
         try {
-            // Skip local/private IPs
+          
             if (ip === '::1' || ip === '127.0.0.1' || ip.startsWith('192.168.') || ip.startsWith('10.') || ip.startsWith('172.')) {
                 return 'Local';
             }
@@ -39,9 +33,7 @@ class Utils {
         }
     }
 
-    /**
-     * Extract domain from referrer URL
-     */
+
     static extractDomain(url) {
         try {
             if (!url) return 'direct';
@@ -52,17 +44,12 @@ class Utils {
         }
     }
 
-    /**
-     * Sanitize user input
-     */
+
     static sanitizeInput(input, maxLength = 2000) {
         if (typeof input !== 'string') return '';
         return input.trim().substring(0, maxLength);
     }
 
-    /**
-     * Create standardized API response
-     */
     static createResponse(success, data = null, error = null, statusCode = 200) {
         const response = { success };
         
@@ -75,9 +62,7 @@ class Utils {
         return response;
     }
 
-    /**
-     * Log request details
-     */
+
     static async logRequest(req, action) {
         const ip = req.ip || req.connection.remoteAddress || 'unknown';
         const userAgent = req.get('User-Agent') || 'unknown';
@@ -87,9 +72,7 @@ class Utils {
         await logger.info('handler', `${action}: ${method} ${path} from ${ip}`);
     }
 
-    /**
-     * Get click data from request
-     */
+
     static getClickData(req) {
         const ip = req.ip || req.connection.remoteAddress || '127.0.0.1';
         const referrer = req.get('Referer') || req.get('Referrer') || 'direct';

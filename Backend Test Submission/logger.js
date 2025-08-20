@@ -1,11 +1,8 @@
-/**
- * Backend Logging Integration
- * Connects Backend Test Submission to the Logging Middleware
- */
+
 
 const { Log, logger } = require('../Logging Middleware');
 
-// Configure the logger with credentials on initialization
+
 const credentials = {
     email: "2215045@nec.edu.in",
     name: "Akhil R",
@@ -15,14 +12,14 @@ const credentials = {
     clientSecret: "HpxUpUnrRzvsYKJz"
 };
 
-// Initialize logging
+
 logger.setupAuth(credentials);
 
-// Export the main Log function and convenience methods
+
 module.exports = {
     Log,
     
-    // Convenience methods for backend operations
+    
     async info(packageName, message) {
         return Log('backend', 'info', packageName, message);
     },
