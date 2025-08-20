@@ -91,68 +91,7 @@ npm install
 # Start the URL Shortener service
 npm start
 
-# Start in development mode with auto-reload
-npm run dev
 ```
-
-### Testing
-```bash
-# Run all tests
-npm test
-
-# Test individual components
-npm run test:backend
-npm run test:logging
-
-# Run demos
-npm run demo:backend
-npm run demo:logging
-```
-
-## 🌐 API Endpoints
-
-The URL Shortener runs on `http://localhost:3000`
-
-- **POST /shorturls** - Create short URL
-- **GET /shorturls/:shortcode** - Get URL statistics
-- **GET /:shortcode** - Redirect to original URL
-- **GET /health** - Health check
-
-## 📊 Features
-
-### URL Shortener Microservice
-- ✅ Custom and auto-generated shortcodes
-- ✅ Configurable validity periods (default: 30 minutes)
-- ✅ Comprehensive analytics with click tracking
-- ✅ Geolocation-based analytics
-- ✅ Robust error handling
-
-### Logging Middleware
-- ✅ Automatic authentication with evaluation server
-- ✅ Smart token refresh management
-- ✅ Comprehensive logging across all operations
-- ✅ Multiple log levels (info, warn, error, debug, fatal)
-- ✅ Integrated with URL Shortener for complete observability
-
-## 🔧 Technology Stack
-
-- **Runtime**: Node.js
-- **Framework**: Express.js
-- **Storage**: In-memory (Map-based)
-- **Authentication**: JWT with automatic refresh
-- **Logging**: Custom middleware integrated with evaluation server
-- **Analytics**: IP-based geolocation, referrer tracking
-
-## 📋 Campus Hiring Compliance
-
-This project meets all requirements specified in the Campus Hiring Evaluation:
-- ✅ Proper folder structure (`Backend Test Submission/`, `Logging Middleware/`)
-- ✅ Comprehensive logging integration throughout the application
-- ✅ RESTful API design with proper HTTP status codes
-- ✅ Custom shortcode support with collision handling
-- ✅ Analytics tracking with detailed click information
-- ✅ Robust error handling and validation
-- ✅ Complete documentation and testing
 
 ## 🏃‍♂️ Getting Started
 
@@ -162,21 +101,6 @@ This project meets all requirements specified in the Campus Hiring Evaluation:
 4. **Test the API**: Visit `http://localhost:3000/health`
 5. **Run demos**: `npm run demo:backend`
 
-## 📚 Documentation
-
-- [`Backend Test Submission/README.md`](Backend%20Test%20Submission/README.md) - Detailed API documentation
-- [`Logging Middleware/README.md`](Logging%20Middleware/README.md) - Logging middleware documentation
-
-## 🎯 Evaluation Ready
-
-This project is complete and ready for Campus Hiring evaluation with:
-- All functional requirements implemented
-- Comprehensive logging integration
-- Production-quality code standards
-- Complete test coverage
-- Thorough documentation
-
----
 
 **Student Submission for Campus Hiring Backend Evaluation**  
 **Roll Number**: 2215045  
