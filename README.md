@@ -2,8 +2,6 @@
 
 A comprehensive HTTP URL Shortener Microservice with integrated Logging Middleware, built for Campus Hiring Backend Evaluation.
 
-
-
 A simple and robust HTTP URL Shortener microservice with analytics capabilities, built with extensive logging integration.
 
 ## � API Output Examples
