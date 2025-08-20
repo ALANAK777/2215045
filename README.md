@@ -48,35 +48,7 @@ A simple and robust HTTP URL Shortener microservice with analytics capabilities,
 
 
 
-## 🏗️ Project Structure
 
-```
-2215045/
-├── package.json                    # Single package.json for entire project
-├── node_modules/                   # Single node_modules folder
-├── .gitignore                     # Git ignore file
-├── README.md                      # This file
-├── 
-├── Backend Test Submission/       # URL Shortener Microservice
-│   ├── server.js                  # Main Express server
-│   ├── database.js                # In-memory URL storage
-│   ├── utils.js                   # Helper functions
-│   ├── README.md                  # Backend API documentation
-│   ├── demo.js                    # API demonstration script
-│   └── test.js                    # API test scripts
-│
-├── Logging Middleware/            # Logging Package
-│   ├── index.js                   # Main logging middleware
-│   ├── auth-manager.js            # Authentication handler
-│   ├── setup.js                   # Credentials configuration
-│   ├── demo.js                    # Logging demonstration
-│   ├── test.js                    # Logging tests
-│   └── README.md                  # Logging documentation
-│
-└── scripts/                       # Unified Scripts
-    ├── start.js                   # Unified start script
-    └── test-all.js                # Run all tests
-```
 
 ## 🚀 Quick Start
 
