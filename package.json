@@ -1,0 +1,35 @@
+{
+  "name": "2215045",
+  "version": "1.0.0",
+  "description": "Campus Hiring Evaluation - URL Shortener Microservice with Logging Middleware",
+  "main": "Backend Test Submission/server.js",
+  "scripts": {
+    "start": "node \"Backend Test Submission/server.js\"",
+    "dev": "nodemon \"Backend Test Submission/server.js\"",
+    "test": "node scripts/test-all.js",
+    "test:all": "node scripts/test-all.js",
+    "test:backend": "node scripts/test-backend.js",
+    "test:logging": "node scripts/test-logging.js",
+    "demo": "node scripts/start.js"
+  },
+  "keywords": [
+    "url-shortener",
+    "microservice",
+    "logging",
+    "middleware",
+    "api",
+    "campus-hiring"
+  ],
+  "author": "Student",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "axios": "^1.6.0",
+    "geoip-lite": "^1.4.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
