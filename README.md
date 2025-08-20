@@ -54,13 +54,11 @@ A simple and robust HTTP URL Shortener microservice with analytics capabilities,
 
 ### Installation
 ```bash
-# Install all dependencies
 npm install
 ```
 
 ### Run the Application
 ```bash
-# Start the URL Shortener service
 npm start
 
 ```
